@@ -9,9 +9,12 @@ module.exports = {
     // 유효한 사용자인지 확인
 
     // 토큰 발급
-    const token = 'abcd'
+    // 발급 시점으로부터 30분(기본) 유효한 모든 요청에 사용할 토큰
+    const token = 'abcd.efg.hijk'
+    // 토큰 만료 시 갱신때 사용하기 위한 토큰
+    const refreshToken = 'bcde.fgh.ijkl'
 
-    res.json({token})
+    res.json({token, refreshToken})
   },
   logout(req, res) {
     console.log('logout called')
