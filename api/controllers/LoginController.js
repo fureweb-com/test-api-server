@@ -4,7 +4,7 @@ const data = {}
 module.exports = {
   async login(req, res) {
     const { type, id } = req.body
-    if(!type || !id) res.badRequest()
+    if(!type || !id) return res.badRequest()
 
     // 유효한 사용자인지 확인
 
