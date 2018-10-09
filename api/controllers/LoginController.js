@@ -5,11 +5,11 @@ module.exports = {
     if(!type) return res.badRequest()
 
     // 타입이 이메일인 경우, 내부에 저장된 암호화된 비밀번호와 일치하는지 확인 필요
+    let currentUser = {}
     if(type === 'email') {
       // email, password
-      const isExistUser = UserService.checkPassword(email, password)
-      console.log(isExistUser)
-      if(!isExistUser) return res.badRequest('로그인 실패')
+      currentUser = UserService.checkPassword(email, password)
+      if(!currentUser) return res.badRequest('로그인 실패')
     }
 
     // 토큰 발급
@@ -18,7 +18,7 @@ module.exports = {
     // 토큰 만료 시 갱신때 사용하기 위한 토큰
     const refreshToken = 'bcde.fgh.ijkl'
 
-    res.json({token, refreshToken})
+    res.json({token, refreshToken, name: currentUser.name})
   },
   logout(req, res) {
     console.log('logout called')
