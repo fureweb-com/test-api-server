@@ -1,0 +1,25 @@
+// 임시 사용자 정보 저장소 (메모리)
+const users = []
+
+module.exports = {
+  nextId() {
+    console.log('UserService.nextId()')
+    return users.length + 1
+  },
+  save(user) {
+    console.log('UserService.save(user)')
+    return users.push(user)
+  },
+  find(type, value) {
+    console.log(`UserService.find(${type}, ${value})`)
+    const availableType = ['id', 'email', 'name']
+    if(!availableType.includes(type)) return null
+    else return users.find(user => user[type] === value)
+  },
+  update(user) {
+
+  },
+  delete(id) {
+
+  }
+}
