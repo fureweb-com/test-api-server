@@ -16,6 +16,10 @@ module.exports = {
     if(!availableType.includes(type)) return null
     else return users.find(user => user[type] === value)
   },
+  checkPassword(email, password) {
+    console.log(`UserService.checkPassword(${email}, ${password})`)
+    return users.find(user => user.email === email && user.password === password)
+  },
   update(user) {
 
   },
