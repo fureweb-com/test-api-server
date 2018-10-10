@@ -22,7 +22,7 @@ const getUserByProvider = (provider, args) => {
     console.log('getUserByProvider !email')
     const {id} = args
     if(!id) return null
-    else return UserService.find('id', id)
+    else return UserService.find('providerId', id)
   }
 }
 
@@ -42,6 +42,7 @@ module.exports = {
     if(selectedUser) return res.badRequest('이미 가입된 사용자입니다.')
     
     const currentUser = { id: UserService.nextId(), email, password, name, mobile, referrer }
+    if(id) Object.assign(currentUser, {provider, providerId: id})
     UserService.save(currentUser)
 
     // 로그인 처리 후 토큰 발행하여 발급된 토큰 가져오기
