@@ -7,7 +7,7 @@ module.exports = {
     return users.length + 1
   },
   save(user) {
-    console.log('UserService.save(user)')
+    console.log('UserService.save(user)', user)
     return users.push(user)
   },
   find(type, value) {
