@@ -1,12 +1,12 @@
 module.exports = {
   async login(req, res) {
-    const { type, id, email, password } = req.body
-    console.log('login called', type, id, email, password)
-    if(!type) return res.badRequest()
+    const { provider, id, email, password } = req.body
+    console.log('login called', provider, id, email, password)
+    if(!provider) return res.badRequest()
 
-    // 타입이 이메일인 경우, 내부에 저장된 암호화된 비밀번호와 일치하는지 확인 필요
+    // 프로바이더가 이메일인 경우, 내부에 저장된 암호화된 비밀번호와 일치하는지 확인 필요
     let currentUser = {}
-    if(type === 'email') {
+    if(String(provider).toUpperCase() === 'EMAIL') {
       // email, password
       currentUser = UserService.checkPassword(email, password)
       if(!currentUser) return res.badRequest('로그인 실패')
