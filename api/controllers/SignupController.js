@@ -2,7 +2,7 @@ const axios = require('axios')
 const serverHost = process.env.NODE_ENV === 'production' ? 'https://api.odigaji.com' : 'http://localhost:3000'
 
 module.exports = {
-  async join(req, res) {
+  async signup(req, res) {
     const {email, password1, password2, name, mobile, referrer} = req.body
     const password = password1
     
