@@ -12,9 +12,15 @@ module.exports = {
   },
   find(type, value) {
     console.log(`UserService.find(${type}, ${value})`)
-    const availableType = ['id', 'email', 'name']
+    const availableType = ['id', 'email', 'name', 'providerId']
     if(!availableType.includes(type)) return null
-    else return users.find(user => user[type] === value)
+    else if(type === 'providerId') {
+      // 이메일도 함께 체크
+      const currentUser = users.find(user => user[type] === value)
+      return currentUser ? users.find(user => user['email'] === currentUser.email) : null
+    } else {
+      return users.find(user => user[type] === value)
+    }
   },
   checkPassword(email, password) {
     console.log(`UserService.checkPassword(${email}, ${password})`)
