@@ -8,7 +8,16 @@ module.exports = {
     let currentUser = {}
     if(String(provider).toUpperCase() === 'EMAIL') {
       // email, password
+      if(!email) return res.badRequest('이메일 주소를 입력해주세요.')
+      else if(!password) return res.badRequest('비밀번호를 입력해주세요.')
+
       currentUser = UserService.checkPassword(email, password)
+      if(!currentUser) return res.badRequest('로그인 실패')
+    } else {
+      // provider, id
+      if(!id) return res.badRequest('고유번호 누락')
+      currentUser = UserService.findByProviderAndId(provider, id)
+      
       if(!currentUser) return res.badRequest('로그인 실패')
     }
 
@@ -18,7 +27,7 @@ module.exports = {
     // 토큰 만료 시 갱신때 사용하기 위한 토큰
     const refreshToken = 'bcde.fgh.ijkl'
 
-    res.json({token, refreshToken, name: currentUser.name})
+    res.json({token, refreshToken, name: currentUser.name, thumbnailImage: currentUser.thumbnailImage})
   },
   logout(req, res) {
     console.log('logout called')
