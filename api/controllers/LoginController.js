@@ -1,7 +1,7 @@
 module.exports = {
   async login(req, res) {
-    const { provider, id, email, password } = req.body
-    console.log('login called', provider, id, email, password)
+    const { provider, uid, email, password } = req.body
+    console.log('login called', provider, uid, email, password)
     if(!provider) return res.badRequest()
 
     // 프로바이더가 이메일인 경우, 내부에 저장된 암호화된 비밀번호와 일치하는지 확인 필요
@@ -14,9 +14,9 @@ module.exports = {
       currentUser = UserService.checkPassword(email, password)
       if(!currentUser) return res.badRequest('로그인 실패')
     } else {
-      // provider, id
-      if(!id) return res.badRequest('고유번호 누락')
-      currentUser = UserService.findByProviderAndId(provider, id)
+      // provider, uid
+      if(!uid) return res.badRequest('고유번호 누락')
+      currentUser = UserService.findByProviderAndId(provider, uid)
       
       if(!currentUser) return res.badRequest('로그인 실패')
     }

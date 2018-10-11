@@ -22,9 +22,9 @@ module.exports = {
       return users.find(user => user[type] === value)
     }
   },
-  findByProviderAndId(provider, id) {
-    console.log(`UserService.findByProviderAndId(${provider}, ${id})`)
-    return users.find(user => user.provider === provider && user.providerId === id)
+  findByProviderAndId(provider, uid) {
+    console.log(`UserService.findByProviderAndId(${provider}, ${uid})`)
+    return users.find(user => user.provider === provider && user.providerId === uid)
   },
   checkPassword(email, password) {
     console.log(`UserService.checkPassword(${email}, ${password})`)

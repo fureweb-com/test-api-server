@@ -7,8 +7,8 @@ const isValidSignup = (provider, args) => {
     return !email || !password || !name ? false : true
   } else {
     console.log('!email check')
-    const {id} = args
-    return !id ? false : true
+    const {uid} = args
+    return !uid ? false : true
   }
 }
 
@@ -20,7 +20,7 @@ const getUserByProvider = (provider, args) => {
     else return UserService.find('email', email)
   } else {
     console.log('getUserByProvider !email', provider)
-    const {id: providerId} = args
+    const {uid: providerId} = args
     if(!provider || !providerId) return null
     else return UserService.findByProviderAndId(provider, providerId)
   }
@@ -28,25 +28,25 @@ const getUserByProvider = (provider, args) => {
 
 module.exports = {
   async signup(req, res) {
-    const {provider, id, email, password, name, mobile, referrer, thumbnailImage} = req.body
-    console.log('signup called', provider)
+    const {provider, uid, email, password, name, mobile, referrer, thumbnailImage} = req.body
+    console.log('signup called', provider, uid, email, password, name, mobile, referrer, thumbnailImage)
     
-    if(!isValidSignup(provider, {id, email, password, name, mobile, referrer})){
+    if(!isValidSignup(provider, {uid, email, password, name, mobile, referrer})){
       return res.badRequest('필수 정보가 누락되었습니다.')
     }
 
     // 회원 가입 처리 -- 트랜잭션 처리 일단 없음 -_- DB의 도움을 받을 예정.
-    const selectedUser = getUserByProvider(provider, {id, email, password, name, mobile, referrer})
+    const selectedUser = getUserByProvider(provider, {uid, email, password, name, mobile, referrer})
     
     // const selectedUser = UserService.find('email', email)
     if(selectedUser) return res.badRequest('이미 가입된 사용자입니다.')
     
-    const currentUser = { id: UserService.nextId(), email, password, name, mobile, referrer, thumbnailImage }
-    if(id) Object.assign(currentUser, {provider, providerId: id})
+    const currentUser = { uid: UserService.nextId(), email, password, name, mobile, referrer, thumbnailImage }
+    if(uid) Object.assign(currentUser, {provider, providerId: uid})
     UserService.save(currentUser)
 
     // 로그인 처리 후 토큰 발행하여 발급된 토큰 가져오기
-    const {status, data: result} = (await axios.post(`${serverHost}/api/v1/users/login`, {provider, id, email, password}))
+    const {status, data: result} = (await axios.post(`${serverHost}/api/v1/users/login`, {provider, uid, email, password}))
 
     // 토큰이 발행되지 않은, status가 200이 아닌경우 별도 처리 필요
 
