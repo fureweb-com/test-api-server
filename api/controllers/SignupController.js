@@ -1,7 +1,7 @@
 const axios = require('axios')
 const serverHost = process.env.NODE_ENV === 'production' ? 'https://api.odigaji.com' : 'http://localhost:3000'
 const isValidSignup = (provider, args) => {
-  if(provider === 'email') {
+  if(String(provider).toLowerCase() === 'email') {
     console.log('email check')
     const {email, password, name} = args
     return !email || !password || !name ? false : true
@@ -13,7 +13,7 @@ const isValidSignup = (provider, args) => {
 }
 
 const getUserByProvider = (provider, args) => {
-  if(provider === 'email') {
+  if(String(provider).toLowerCase() === 'email') {
     console.log('getUserByProvider email')
     const {email} = args
     if(!email) return null
@@ -50,7 +50,7 @@ module.exports = {
     UserService.save(currentUser)
 
     // 로그인 처리 후 토큰 발행하여 발급된 토큰 가져오기
-    const {status, data: result} = (await axios.post(`${serverHost}/api/v1/users/login`, {provider, uid, email, password}))
+    const {status, data: result} = (await axios.post(`${serverHost}/api/v1/users/signin`, {provider, uid, email, password}))
 
     // 토큰이 발행되지 않은, status가 200이 아닌경우 별도 처리 필요
 
