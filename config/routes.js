@@ -45,8 +45,8 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
   // v1
-  'POST /api/v1/users/login'  : 'LoginController.login',
-  'POST /api/v1/users/logout' : 'LoginController.logout',
+  'POST /api/v1/users/signin'  : 'LoginController.login',
+  'POST /api/v1/users/signout' : 'LoginController.logout',
   'POST /api/v1/users/signup'   : 'SignupController.signup',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
