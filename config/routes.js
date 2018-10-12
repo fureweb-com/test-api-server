@@ -49,6 +49,8 @@ module.exports.routes = {
   'POST /api/v1/users/signout' : 'LoginController.logout',
   'POST /api/v1/users/signup'   : 'SignupController.signup',
 
+  'GET /api/v1/oAuthCallback/:type' : 'OAuthCallbackController.oAuth',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
