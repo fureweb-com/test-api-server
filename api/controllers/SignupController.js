@@ -28,8 +28,8 @@ const getUserByProvider = (provider, args) => {
 
 module.exports = {
   async signup(req, res) {
-    const {provider, uid, email, password, name, mobile, referrer, thumbnail_image} = req.body
-    console.log('signup called', provider, uid, email, password, name, mobile, referrer, thumbnail_image)
+    const {provider, uid, email, password, password_confirmation, name, mobile, referrer, thumbnail_image} = req.body
+    console.log('signup called', provider, uid, email, password, password_confirmation, name, mobile, referrer, thumbnail_image)
     
     if(!isValidSignup(provider, {uid, email, password, name, mobile, referrer})){
       return res.badRequest('필수 정보가 누락되었습니다.')
@@ -38,6 +38,7 @@ module.exports = {
     // provider와 상관없이 이메일 체크 필요
     const isExistEmail = UserService.find('email', email)
     if(isExistEmail) return res.badRequest('이미 사용중인 이메일입니다.')
+    if(password !== password_confirmation) return res.badRequest('비밀번호가 일치하지 않습니다.')
 
     // 회원 가입 처리 -- 트랜잭션 처리 일단 없음 -_- DB의 도움을 받을 예정.
     const selectedUser = getUserByProvider(provider, {uid, email, password, name, mobile, referrer})
