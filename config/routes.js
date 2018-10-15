@@ -53,7 +53,7 @@ module.exports.routes = {
 
   'GET /api/v1/boards/:type'       : 'BoardController.getArticleList',
   'GET /api/v1/boards/:type/:id'   : 'BoardController.getArticle',
-  'GET /api/v1/boards/:type/replies' : 'BoardReplyController.getReplyList',
+  'GET /api/v1/boards/:type/:id/replies' : 'BoardReplyController.getReplyList',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
