@@ -28,8 +28,8 @@ const getUserByProvider = (provider, args) => {
 
 module.exports = {
   async signup(req, res) {
-    const {provider, uid, email, password, name, mobile, referrer, thumbnailImage} = req.body
-    console.log('signup called', provider, uid, email, password, name, mobile, referrer, thumbnailImage)
+    const {provider, uid, email, password, name, mobile, referrer, thumbnail_image} = req.body
+    console.log('signup called', provider, uid, email, password, name, mobile, referrer, thumbnail_image)
     
     if(!isValidSignup(provider, {uid, email, password, name, mobile, referrer})){
       return res.badRequest('필수 정보가 누락되었습니다.')
@@ -45,7 +45,7 @@ module.exports = {
     // const selectedUser = UserService.find('email', email)
     if(selectedUser) return res.badRequest('이미 가입된 사용자입니다.')
     
-    const currentUser = { uid: UserService.nextId(), email, password, name, mobile, referrer, thumbnailImage }
+    const currentUser = { uid: UserService.nextId(), email, password, name, mobile, referrer, thumbnail_image }
     if(uid) Object.assign(currentUser, {provider, providerId: uid})
     UserService.save(currentUser)
 
