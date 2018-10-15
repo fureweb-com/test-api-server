@@ -24,8 +24,13 @@ module.exports = {
     const result = {
       type,
       id,
+      userId: 1,
+      name: '1번 게시글작성자',
       title: `${type}에 대한 ${id}번 글 테스트 제목`,
       content: `타입: ${type}, 아이디: ${id}}\n해당 게시글에 대한 본문을 DB에서 조회 후 응답`,
+      createdAt: +moment(),
+      updatedAt: +moment(),
+
     }
     res.json(result)
   },
