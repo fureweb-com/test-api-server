@@ -45,13 +45,14 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
   // v1
-  'POST /api/v1/users/signin'  : 'LoginController.login',
-  'POST /api/v1/users/signout' : 'LoginController.logout',
-  'POST /api/v1/users/signup'   : 'SignupController.signup',
+  'POST /api/v1/signin'  : 'LoginController.login',
+  'POST /api/v1/signout' : 'LoginController.logout',
+  'POST /api/v1/signup'   : 'SignupController.signup',
 
   'GET /api/v1/oAuthCallback/:provider' : 'OAuthCallbackController.oAuth',
 
-  'GET /api/v1/board/:type/:id' : 'BoardController.getArticle',
+  'GET /api/v1/board/:type'       : 'BoardController.getArticleList',
+  'GET /api/v1/board/:type/:id'   : 'BoardController.getArticle',
   'GET /api/v1/board/:type/reply' : 'BoardReplyController.getReplyList',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
