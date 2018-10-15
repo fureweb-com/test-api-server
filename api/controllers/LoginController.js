@@ -27,7 +27,7 @@ module.exports = {
     // 토큰 만료 시 갱신때 사용하기 위한 토큰
     const refreshToken = 'bcde.fgh.ijkl'
 
-    res.json({token, refreshToken, name: currentUser.name, thumbnailImage: currentUser.thumbnailImage})
+    res.json({token, refreshToken, name: currentUser.name, thumbnail_image: currentUser.thumbnail_image})
   },
   logout(req, res) {
     console.log('logout called')
