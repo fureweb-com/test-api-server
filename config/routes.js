@@ -51,9 +51,9 @@ module.exports.routes = {
 
   'GET /api/v1/oAuthCallback/:provider' : 'OAuthCallbackController.oAuth',
 
-  'GET /api/v1/board/:type'       : 'BoardController.getArticleList',
-  'GET /api/v1/board/:type/:id'   : 'BoardController.getArticle',
-  'GET /api/v1/board/:type/reply' : 'BoardReplyController.getReplyList',
+  'GET /api/v1/boards/:type'       : 'BoardController.getArticleList',
+  'GET /api/v1/boards/:type/:id'   : 'BoardController.getArticle',
+  'GET /api/v1/boards/:type/replies' : 'BoardReplyController.getReplyList',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
