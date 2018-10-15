@@ -50,7 +50,7 @@ module.exports = {
     UserService.save(currentUser)
 
     // 로그인 처리 후 토큰 발행하여 발급된 토큰 가져오기
-    const {status, data: result} = (await axios.post(`${serverHost}/api/v1/users/signin`, {provider, uid, email, password}))
+    const {status, data: result} = (await axios.post(`${serverHost}/api/v1/signin`, {provider, uid, email, password}))
 
     // 토큰이 발행되지 않은, status가 200이 아닌경우 별도 처리 필요
 
