@@ -1,6 +1,8 @@
 const moment = require('moment')
 const getMandatoryFields = (req, res) => {
   const {authorization: jwtToken} = req.headers
+  if(!jwtToken) return res.forbidden()
+
   const userInfo = TokenService.decodeJWT(jwtToken)
   const [type, boardId, replyId] = [req.param('type'), req.param('boardId'), req.param('replyId')]
 
