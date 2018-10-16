@@ -1,8 +1,19 @@
 const moment = require('moment')
+const getMandatoryFields = (req, res) => {
+  const {authorization: jwtToken} = req.headers
+  const userInfo = TokenService.decodeJWT(jwtToken)
+  const [type, boardId, replyId] = [req.param('type'), req.param('boardId'), req.param('replyId')]
+
+  if(!type) return res.badRequest('type이 존재하지 않습니다.')
+  else if(!boardId) return res.badRequest('boardId이 존재하지 않습니다.')
+  else if(!replyId) return res.badRequest('replyId이 존재하지 않습니다.')
+
+  return {type, boardId, replyId, user: userInfo}
+}
 
 module.exports = {
   getReplyList(req, res) {
-    const [type, boardId, page = 1] = [req.param('type'), req.param('id'), req.param('page')]
+    const [type, boardId, page = 1] = [req.param('type'), req.param('boardId'), req.param('page')]
     const result = {
       replyList: [
         // {id, content, user_id, created_at, modifiedAt, is_like_votted, is_unlike_votted} 형태로 응답
@@ -15,5 +26,27 @@ module.exports = {
     }
 
     res.json(result)
-  }
+  },
+  updateReply(req, res) {
+    const {type, boardId, replyId, user: {id: userId}} = getMandatoryFields(req, res)
+    const {content} = req.body
+    
+    console.log('updateReply', type, boardId, replyId, content)
+    res.json({type, boardId, replyId, userId})
+  },
+  deleteReply(req, res) {
+    const {type, boardId, replyId, user: {id: userId}} = getMandatoryFields(req, res)
+    console.log('deleteReply', type, boardId, replyId)
+    res.json({type, boardId, replyId, userId})
+  },
+  likeReply(req, res) {
+    const {type, boardId, replyId, user: {id: userId}} = getMandatoryFields(req, res)
+    console.log('likeReply', type, boardId, replyId)
+    res.json({type, boardId, replyId, userId})
+  },
+  dislikeReply(req, res) {
+    const {type, boardId, replyId, user: {id: userId}} = getMandatoryFields(req, res)
+    console.log('dislikeReply', type, boardId, replyId)
+    res.json({type, boardId, replyId, userId})
+  },
 }
