@@ -29,7 +29,7 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    order: [
+   order: [
       'cookieParser',
       'session',
       'bodyParser',
@@ -38,7 +38,6 @@ module.exports.http = {
       'router',
       'www',
       'favicon',
-      'disablePoweredBy',
     ],
 
     /***************************************************************************
@@ -55,7 +54,7 @@ module.exports.http = {
     //   return middlewareFn;
     // })(),
 
-    disablePoweredBy(request, response, next) {
+    poweredBy(request, response, next) {
       var expressApp = sails.hooks.http.app;
       expressApp.disable('x-powered-by');
       response.set('X-Powered-By', 'fureweb-com');
