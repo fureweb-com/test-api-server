@@ -4,18 +4,18 @@ const extractMandatoryFields = (req, res) => {
   if(!jwtToken) return res.forbidden(), undefined
 
   const userInfo = TokenService.decodeJWT(jwtToken)
-  const [type, boardId, replyId] = [req.param('type'), req.param('boardId'), req.param('replyId')]
+  const [category, boardId, replyId] = [req.param('category'), req.param('boardId'), req.param('replyId')]
 
-  if(!type) return res.badRequest('type이 존재하지 않습니다.'), undefined
+  if(!category) return res.badRequest('category가 존재하지 않습니다.'), undefined
   else if(!boardId) return res.badRequest('boardId이 존재하지 않습니다.'), undefined
   else if(!replyId) return res.badRequest('replyId이 존재하지 않습니다.'), undefined
 
-  return {type, boardId, replyId, user: userInfo}
+  return {category, boardId, replyId, user: userInfo}
 }
 
 module.exports = {
   getReplyList(req, res) {
-    const [type, boardId, page = 1] = [req.param('type'), req.param('boardId'), req.param('page')]
+    const [category, boardId, page = 1] = [req.param('category'), req.param('boardId'), req.param('page')]
     const result = {
       replyList: [
         // {id, content, user_id, created_at, modifiedAt, is_like_votted, is_unlike_votted} 형태로 응답
@@ -33,34 +33,34 @@ module.exports = {
     const fields = extractMandatoryFields(req, res)
     if(!fields) return
 
-    const {type, boardId, replyId, user} = fields
+    const {category, boardId, replyId, user} = fields
     const {content} = req.body
     
-    console.log('updateReply', type, boardId, replyId, content)
-    res.json({type, boardId, replyId, userId: user.id})
+    console.log('updateReply', category, boardId, replyId, content)
+    res.json({category, boardId, replyId, userId: user.id})
   },
   deleteReply(req, res) {
     const fields = extractMandatoryFields(req, res)
     if(!fields) return
 
-    const {type, boardId, replyId, user} = fields
-    console.log('deleteReply', type, boardId, replyId)
-    res.json({type, boardId, replyId, userId: user.id})
+    const {category, boardId, replyId, user} = fields
+    console.log('deleteReply', category, boardId, replyId)
+    res.json({category, boardId, replyId, userId: user.id})
   },
   likeReply(req, res) {
     const fields = extractMandatoryFields(req, res)
     if(!fields) return
 
-    const {type, boardId, replyId, user} = fields
-    console.log('likeReply', type, boardId, replyId)
-    res.json({type, boardId, replyId, userId: user.id})
+    const {category, boardId, replyId, user} = fields
+    console.log('likeReply', category, boardId, replyId)
+    res.json({category, boardId, replyId, userId: user.id})
   },
   dislikeReply(req, res) {
     const fields = extractMandatoryFields(req, res)
     if(!fields) return
 
-    const {type, boardId, replyId, user} = fields
-    console.log('dislikeReply', type, boardId, replyId)
-    res.json({type, boardId, replyId, userId: user.id})
+    const {category, boardId, replyId, user} = fields
+    console.log('dislikeReply', category, boardId, replyId)
+    res.json({category, boardId, replyId, userId: user.id})
   },
 }
