@@ -51,14 +51,14 @@ module.exports.routes = {
 
   'GET /api/v1/oAuthCallback/:provider' : 'OAuthCallbackController.oAuth',
 
-  'GET /api/v1/boards/:type'       : 'BoardController.getArticleList',
-  'GET /api/v1/boards/:type/:id'   : 'BoardController.getArticle',
+  'GET /api/v1/boards/:category'       : 'BoardController.getArticleList',
+  'GET /api/v1/boards/:category/:id'   : 'BoardController.getArticle',
 
-  'GET /api/v1/boards/:type/:boardId/replies'                  : 'BoardReplyController.getReplyList',
-  'PUT /api/v1/boards/:type/:boardId/replies/:replyId'         : 'BoardReplyController.updateReply',
-  'DELETE /api/v1/boards/:type/:boardId/replies/:replyId'      : 'BoardReplyController.deleteReply',
-  'PUT /api/v1/boards/:type/:boardId/replies/:replyId/like'    : 'BoardReplyController.likeReply',
-  'PUT /api/v1/boards/:type/:boardId/replies/:replyId/dislike' : 'BoardReplyController.dislikeReply',
+  'GET /api/v1/boards/:category/:boardId/replies'                  : 'BoardReplyController.getReplyList',
+  'PUT /api/v1/boards/:category/:boardId/replies/:replyId'         : 'BoardReplyController.updateReply',
+  'DELETE /api/v1/boards/:category/:boardId/replies/:replyId'      : 'BoardReplyController.deleteReply',
+  'PUT /api/v1/boards/:category/:boardId/replies/:replyId/like'    : 'BoardReplyController.likeReply',
+  'PUT /api/v1/boards/:category/:boardId/replies/:replyId/dislike' : 'BoardReplyController.dislikeReply',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
