@@ -57,7 +57,9 @@ module.exports.http = {
     poweredBy(request, response, next) {
       var expressApp = sails.hooks.http.app;
       expressApp.disable('x-powered-by');
+      expressApp.disable('server');
       response.set('X-Powered-By', 'fureweb-com');
+      response.set('Server', 'fureweb-com');
       next();
     },
   },
