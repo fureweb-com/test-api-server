@@ -12,20 +12,6 @@ const isValidSignup = (provider, args) => {
   }
 }
 
-const getUserByProvider = (provider, args) => {
-  if(String(provider).toLowerCase() === 'email') {
-    console.log('getUserByProvider email')
-    const {email} = args
-    if(!email) return null
-    else return UserService.find('email', email)
-  } else {
-    console.log('getUserByProvider !email', provider)
-    const {uid: providerId} = args
-    if(!provider || !providerId) return null
-    else return UserService.findByProviderAndId(provider, providerId)
-  }
-}
-
 module.exports = {
   async signup(req, res) {
     const {provider, uid, email, password, password_confirmation, name, mobile, referrer, thumbnail_image} = req.body
@@ -41,7 +27,7 @@ module.exports = {
     if(password !== password_confirmation) return res.badRequest('비밀번호가 일치하지 않습니다.')
 
     // 회원 가입 처리 -- 트랜잭션 처리 일단 없음 -_- DB의 도움을 받을 예정.
-    const selectedUser = getUserByProvider(provider, {uid, email, password, name, mobile, referrer})
+    const selectedUser = UserService.getUserByProvider(provider, {uid, email, password, name, mobile, referrer})
     
     // const selectedUser = UserService.find('email', email)
     if(selectedUser) return res.badRequest('이미 가입된 사용자입니다.')

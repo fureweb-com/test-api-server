@@ -2,6 +2,19 @@
 const users = []
 
 module.exports = {
+  getUserByProvider(provider, args) {
+    if(String(provider).toLowerCase() === 'email') {
+      console.log('getUserByProvider email')
+      const {email} = args
+      if(!email) return null
+      else return UserService.find('email', email)
+    } else {
+      console.log('getUserByProvider !email', provider)
+      const {uid: providerId} = args
+      if(!provider || !providerId) return null
+      else return UserService.findByProviderAndId(provider, providerId)
+    }
+  },
   nextId() {
     console.log('UserService.nextId()')
     return users.length + 1
