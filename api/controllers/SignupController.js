@@ -42,7 +42,7 @@ module.exports = {
     // 토큰이 발행되지 않은, status가 200이 아닌경우 별도 처리 필요
 
     // 테스트 응답용 데이터
-    res.json(Object.assign(result))
+    res.json(Object.assign(result, {thumbnail_image}))
   },
   
 }
