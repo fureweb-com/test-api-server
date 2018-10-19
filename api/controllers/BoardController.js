@@ -7,13 +7,28 @@ module.exports = {
     if(!type) return res.badRequest('타입이 존재하지 않습니다.')
 
     const result = {
-      boardList: [
-        { id: 1, type, user_id: 1, name: '1번 게시글작성자', title: '1번 게시글 제목', content: '1번 게시글 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
-        { id: 2, type, user_id: 2, name: '2번 게시글작성자', title: '2번 게시글 제목', content: '2번 게시글 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
-        { id: 3, type, user_id: 3, name: '3번 게시글작성자', title: '3번 게시글 제목', content: '3번 게시글 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
-        { id: 4, type, user_id: 4, name: '4번 게시글작성자', title: '4번 게시글 제목', content: '4번 게시글 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
-        { id: 5, type, user_id: 5, name: '5번 게시글작성자', title: '5번 게시글 제목', content: '5번 게시글 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
-      ]
+      boardList: 
+      type === 'faq' ? [
+        { id: 1, type, user_id: 1, name: '1번 자주묻는질문 작성자', title: '1번 자주묻는질문 제목', content: '1번 자주묻는질문 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 2, type, user_id: 2, name: '2번 자주묻는질문 작성자', title: '2번 자주묻는질문 제목', content: '2번 자주묻는질문 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 3, type, user_id: 3, name: '3번 자주묻는질문 작성자', title: '3번 자주묻는질문 제목', content: '3번 자주묻는질문 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 4, type, user_id: 4, name: '4번 자주묻는질문 작성자', title: '4번 자주묻는질문 제목', content: '4번 자주묻는질문 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 5, type, user_id: 5, name: '5번 자주묻는질문 작성자', title: '5번 자주묻는질문 제목', content: '5번 자주묻는질문 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+      ] :
+      type === 'qna' ? [
+        { id: 1, type, user_id: 1, name: '1번 질문과 답변 작성자', title: '1번 질문과 답변 제목', content: '1번 질문과 답변 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 2, type, user_id: 2, name: '2번 질문과 답변 작성자', title: '2번 질문과 답변 제목', content: '2번 질문과 답변 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 3, type, user_id: 3, name: '3번 질문과 답변 작성자', title: '3번 질문과 답변 제목', content: '3번 질문과 답변 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 4, type, user_id: 4, name: '4번 질문과 답변 작성자', title: '4번 질문과 답변 제목', content: '4번 질문과 답변 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 5, type, user_id: 5, name: '5번 질문과 답변 작성자', title: '5번 질문과 답변 제목', content: '5번 질문과 답변 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+      ] :
+      type === 'notice' ? [
+        { id: 1, type, user_id: 1, name: '1번 공지사항', title: '1번 공지사항 제목', content: '1번 공지사항 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 2, type, user_id: 2, name: '2번 공지사항', title: '2번 공지사항 제목', content: '2번 공지사항 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 3, type, user_id: 3, name: '3번 공지사항', title: '3번 공지사항 제목', content: '3번 공지사항 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 4, type, user_id: 4, name: '4번 공지사항', title: '4번 공지사항 제목', content: '4번 공지사항 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+        { id: 5, type, user_id: 5, name: '5번 공지사항', title: '5번 공지사항 제목', content: '5번 공지사항 내용', view_count: 1, created_at: +moment(), updated_at: +moment() },
+      ] : []
     }
     res.json(result)
   },
