@@ -24,7 +24,7 @@
     "@sailshq/eslint": "^4.19.3"
   },
   "scripts": {
-    "start": "pm2 start npm --name \"test-api-server\" -- run server",
+    "start": "pm2 start npm --name test-api-server -- run server",
     "server": "NODE_ENV=production npx sails l --prod",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
