@@ -1,9 +1,10 @@
 const moment = require('moment')
 const extractMandatoryFields = (req, res) => {
   const {authorization: jwtToken} = req.headers
-  if(!jwtToken) return res.forbidden(), undefined
+  if(!jwtToken || jwtToken === 'undefined') return res.forbidden(), undefined
 
   const userInfo = TokenService.decodeJWT(jwtToken)
+  console.log('userInfo', userInfo)
   const [category, boardId, replyId] = [req.param('category'), req.param('boardId'), req.param('replyId')]
 
   if(!category) return res.badRequest('category가 존재하지 않습니다.'), undefined
@@ -32,14 +33,14 @@ module.exports = {
   },
   updateReply(req, res) {
     const fields = extractMandatoryFields(req, res)
-    if(!fields) return res.badRequest()
+    if(!fields) return
     
     const {category, boardId, replyId, user} = fields
     console.log('updateReply', category, boardId, replyId, user)
     const {content} = req.body
     let isUpdated = false
     replyList.forEach(reply => {
-      if(reply.id === Number(replyId)) {
+      if(reply.id === Number(replyId) && reply.user_id === user.id) {
         isUpdated = true
         reply.content = content
       }
@@ -50,11 +51,11 @@ module.exports = {
   },
   deleteReply(req, res) {
     const fields = extractMandatoryFields(req, res)
-    if(!fields) return res.badRequest()
+    if(!fields) return
 
     const {category, boardId, replyId, user} = fields
     console.log('deleteReply', category, boardId, replyId, user)
-    const indexToDelete = replyList.findIndex(reply => reply.id === Number(replyId))
+    const indexToDelete = replyList.findIndex(reply => reply.id === Number(replyId) && reply.user_id === user.id)
     let isDeleted = false
     if(indexToDelete > -1)
       isDeleted = !!replyList.splice(indexToDelete, 1).length
