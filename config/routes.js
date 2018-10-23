@@ -49,6 +49,9 @@ module.exports.routes = {
   'POST /api/v1/signout' : 'LoginController.logout',
   'POST /api/v1/signup'   : 'SignupController.signup',
 
+  // token refresh
+  'POST /api/v1/token': 'TokenController.refreshToken',
+
   'GET /api/v1/oAuthCallback/:provider' : 'OAuthCallbackController.oAuth',
 
   'GET /api/v1/boards/:category'       : 'BoardController.getArticleList',
