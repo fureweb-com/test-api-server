@@ -27,9 +27,13 @@ module.exports = {
   decodeJWT(jwtToken) {
     const token = jwtToken.split('.')
 
-    if(token.length !== 3) throw `invalid jwt token: ${jwtToken}`
-    const [,payload,] = token
-    const decodedPayload = getDecodedPayload(payload)
+    let decodedPayload
+    if(token.length !== 3) {
+      decodedPayload = '{}'
+    } else {
+      const [,payload,] = token
+      decodedPayload = getDecodedPayload(payload)
+    }
 
     return JSON.parse(decodedPayload)
   }
