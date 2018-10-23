@@ -31,7 +31,7 @@ module.exports = {
   },
   updateReply(req, res) {
     const fields = extractMandatoryFields(req, res)
-    if(!fields) return
+    if(!fields) return res.badRequest()
 
     const {category, boardId, replyId, user} = fields
     const {content} = req.body
@@ -41,7 +41,7 @@ module.exports = {
   },
   deleteReply(req, res) {
     const fields = extractMandatoryFields(req, res)
-    if(!fields) return
+    if(!fields) return res.badRequest()
 
     const {category, boardId, replyId, user} = fields
     console.log('deleteReply', category, boardId, replyId)
@@ -49,7 +49,7 @@ module.exports = {
   },
   likeReply(req, res) {
     const fields = extractMandatoryFields(req, res)
-    if(!fields) return
+    if(!fields) return res.badRequest()
 
     const {category, boardId, replyId, user} = fields
     console.log('likeReply', category, boardId, replyId)
@@ -57,7 +57,7 @@ module.exports = {
   },
   dislikeReply(req, res) {
     const fields = extractMandatoryFields(req, res)
-    if(!fields) return
+    if(!fields) return res.badRequest()
 
     const {category, boardId, replyId, user} = fields
     console.log('dislikeReply', category, boardId, replyId)
