@@ -28,7 +28,7 @@ module.exports = {
     // 빌링키 발급.. 사용자 고유번호를 빌링키로 사용하도록 iamport쪽에 등록 요청한다.
     // customer_uid가 abcd_1234인 경우, 향후 abcd_1234로 즉시 승인요청할 수 있는 준비가 되는 것이다.
     const billingKeyUrl = `https://api.iamport.kr/subscribe/customers/${customer_uid}`
-    const billingKeyData = {card_number, expiry, birth, pwd_2digit}
+    const billingKeyData = {card_number, expiry: '20' + expiry.slice(2,4) + '/' + expiry.slice(0,2) , birth, pwd_2digit}
     const billingKeyHeaders = {'Content-Type': 'application/json', 'Authorization': access_token}
 
     const {code, message} = (await axios.post(billingKeyUrl, billingKeyData, {headers: billingKeyHeaders})).data
