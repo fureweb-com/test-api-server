@@ -51,6 +51,8 @@ module.exports.routes = {
 
   // payment
   'POST /api/v1/payment/billingKey' : 'PaymentController.setBillingKey',
+  'POST /api/v1/payment/password' : 'PaymentController.setCardPassword',
+
 
   // token refresh
   'POST /api/v1/token': 'TokenController.refreshToken',
