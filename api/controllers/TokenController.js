@@ -2,7 +2,7 @@ module.exports = {
   refreshToken(req, res) {
     // refresh용 token을 전달받는다.
     const {refreshToken} = req.body
-    if(!refreshToken) return res.badRequest('refreshToken not found')
+    if(!refreshToken) return res.badRequest({message: ['refreshToken not found']})
 
     console.log('refreshToken request::', refreshToken)
     // 토큰 새로 발급 후 응답

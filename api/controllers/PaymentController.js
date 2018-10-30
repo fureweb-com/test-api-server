@@ -6,7 +6,7 @@ module.exports = {
   // @ POST
   async setBillingKey({body: {card_number, expiry, pwd_2digit, birth}}, res) {
     if(!rest_key || !rest_secret) 
-      return res.badRequest('config/local.js 파일 내 iamport: {rest_key, rest_secret} 속성을 설정 후 요청하세요.')
+      return res.badRequest({message: ['config/local.js 파일 내 iamport: {rest_key, rest_secret} 속성을 설정 후 요청하세요.']})
 
     // 사용자가 입력한 카드정보를 통해 iamport에 billingKey를 요청해 얻어온 뒤 리턴시킨다.
     const customer_uid = 'abcd_1234' // 주문과 관련된 사용자 고유번호, 이 값이 향후 결제를 위한 billingKey가 된다.
@@ -34,9 +34,9 @@ module.exports = {
     const {code, message} = (await axios.post(billingKeyUrl, billingKeyData, {headers: billingKeyHeaders})).data
 
     if (code === 0) {
-      res.json({code, message})
+      res.json({code, message: [message]})
     } else {
-      res.badRequest({code, message})
+      res.badRequest({code, message: [message]})
     }
   }
 }

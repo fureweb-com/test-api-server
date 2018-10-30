@@ -4,7 +4,7 @@ module.exports = {
   getArticleList(req, res) {
     console.log('getArticleList')
     const [category] = [req.param('category')]
-    if(!category) return res.badRequest('타입이 존재하지 않습니다.')
+    if(!category) return res.badRequest({message: ['타입이 존재하지 않습니다.']})
 
     const result = {
       boardList: 
@@ -35,14 +35,14 @@ module.exports = {
   getArticle(req, res) {
     console.log('getArticle')
     const [category, id] = [req.param('category'), req.param('id')]
-    if(!category) return res.badRequest('카테고리가 존재하지 않습니다.')
-    else if(!id) return res.badRequest('아이디가 존재하지 않습니다.')
+    if(!category) return res.badRequest({message: ['카테고리가 존재하지 않습니다.']})
+    else if(!id) return res.badRequest({message: ['아이디가 존재하지 않습니다.']})
 
     const result = {
       category,
       id,
       user_id: 1,
-      name: '1번 게시글작성자',
+      name: `${id}번 게시글작성자 이름`,
       title: `${category}에 대한 ${id}번 글 테스트 제목`,
       content: `카테고리: ${category}, 아이디: ${id}}\n해당 게시글에 대한 본문을 DB에서 조회 후 응답`,
       view_count: 1,
@@ -52,4 +52,7 @@ module.exports = {
     }
     res.json(result)
   },
+  getReplyList(req, res) {
+
+  }
 }

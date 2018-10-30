@@ -7,9 +7,9 @@ const extractMandatoryFields = (req, res) => {
   console.log('userInfo', userInfo)
   const [category, boardId, replyId] = [req.param('category'), req.param('boardId'), req.param('replyId')]
 
-  if(!category) return res.badRequest('category가 존재하지 않습니다.'), undefined
-  else if(!boardId) return res.badRequest('boardId이 존재하지 않습니다.'), undefined
-  else if(!replyId) return res.badRequest('replyId이 존재하지 않습니다.'), undefined
+  if(!category) return res.badRequest({message: ['category가 존재하지 않습니다.']}), undefined
+  else if(!boardId) return res.badRequest({message: ['boardId이 존재하지 않습니다.']}), undefined
+  else if(!replyId) return res.badRequest({message: ['replyId이 존재하지 않습니다.']}), undefined
 
   return {category, boardId, replyId, user: userInfo}
 }

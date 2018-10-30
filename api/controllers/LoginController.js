@@ -8,17 +8,17 @@ module.exports = {
     let currentUser = {}
     if(String(provider).toUpperCase() === 'EMAIL') {
       // email, password
-      if(!email) return res.badRequest('이메일 주소를 입력해주세요.')
-      else if(!password) return res.badRequest('비밀번호를 입력해주세요.')
+      if(!email) return res.badRequest({message: ['이메일 주소를 입력해주세요.']})
+      else if(!password) return res.badRequest({message: ['비밀번호를 입력해주세요.']})
 
       currentUser = UserService.checkPassword(email, password)
-      if(!currentUser) return res.badRequest('로그인 실패')
+      if(!currentUser) return res.badRequest({message: ['로그인 실패']})
     } else {
       // provider, uid
-      if(!uid) return res.badRequest('고유번호 누락')
+      if(!uid) return res.badRequest({message: ['고유번호 누락']})
       currentUser = UserService.findByProviderAndId(provider, uid)
       
-      if(!currentUser) return res.badRequest('로그인 실패')
+      if(!currentUser) return res.badRequest({message: ['로그인 실패']})
     }
 
     // 토큰 발급
