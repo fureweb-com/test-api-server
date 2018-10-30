@@ -49,6 +49,9 @@ module.exports.routes = {
   'POST /api/v1/signout' : 'LoginController.logout',
   'POST /api/v1/signup'   : 'SignupController.signup',
 
+  // payment
+  'POST /api/v1/payment/billingKey' : 'PaymentController.setBillingKey',
+
   // token refresh
   'POST /api/v1/token': 'TokenController.refreshToken',
 
