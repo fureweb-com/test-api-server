@@ -5,8 +5,12 @@ const axios = require('axios')
 module.exports = {
   // @ POST
   async setBillingKey({body: {card_number, expiry, pwd_2digit, birth}}, res) {
-    if(!rest_key || !rest_secret) 
+    if (!rest_key || !rest_secret) 
       return res.badRequest({message: ['config/local.js 파일 내 iamport: {rest_key, rest_secret} 속성을 설정 후 요청하세요.']})
+
+    // 테스트용 메서드
+    if (card_number === '1234123412341234' && expiry === '1234' && pwd_2digit === '12' && birth === '123456')
+      return res.json({code: 0, message: [null]})
 
     // 사용자가 입력한 카드정보를 통해 iamport에 billingKey를 요청해 얻어온 뒤 리턴시킨다.
     const customer_uid = 'abcd_1234' // 주문과 관련된 사용자 고유번호, 이 값이 향후 결제를 위한 billingKey가 된다.
@@ -45,7 +49,7 @@ module.exports = {
 
     // 사용자가 자신이 등록한 간편결제 비밀번호로 사용할 정보를 전달받습니다.
     // 실제 사용 시 password는 6자리가 아닌, 복호화할 수 있는 암호화된 문자열이어야합니다.
-
+    console.log(`사용자 uid를 요청 헤더에서 추출한 뒤, 해당 사용자에 대한 간편결제비밀번호인 ${password}를 등록처리한다.`)
     res.json({password})
   }
 }
