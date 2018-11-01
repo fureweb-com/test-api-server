@@ -23,9 +23,11 @@ module.exports = {
 
     // 토큰 발급
     // 발급 시점으로부터 30분(기본) 유효한 모든 요청에 사용할 토큰
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Iu2FjOyKpO2EsCJ9.H8QPT0JlOxF-4MEMA3R54JF5tNFIGvlKwbFfrMwKZI4'
+    // 전달받은 사용자 이름을 name에 넣어 토큰을 내려준다. 아래 토큰 인코딩 필요!
+    const token = TokenService.encodeJWT({provider, uid, email})
+    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Iu2FjOyKpO2EsCJ9.H8QPT0JlOxF-4MEMA3R54JF5tNFIGvlKwbFfrMwKZI4'
     // 토큰 만료 시 갱신때 사용하기 위한 토큰
-    const refreshToken = 'bcde.fgh.ijkl'
+    const refreshToken = 'test.token.for_refresh'
 
     res.json({token, refreshToken, name: currentUser.name, thumbnail_image: currentUser.thumbnail_image})
   },
