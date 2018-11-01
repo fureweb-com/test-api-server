@@ -23,7 +23,28 @@ const getDecodedPayload = str => {
   catch (err) { return atob(output) }
 }
 
+const getEncodedHeader =_=> {
+  const header = {
+    'typ': 'JWT',
+    'alg': 'HS256',
+  }
+
+  return new Buffer(JSON.stringify(header)).toString('base64').replace('=', '')
+}
+
+const getEncodedSignature =(encodedHeader, encodedPayload)=>{
+  const crypto = require('crypto')
+  const signature = crypto.createHmac('sha256', 'secret').update(`${encodedHeader}.${encodedPayload}`).digest('base64').replace('=', '')
+  return signature
+}
+
 module.exports = {
+  encodeJWT(payload = {}) {
+    const encodedHeader = getEncodedHeader()
+    const encodedPayload = new Buffer(JSON.stringify(payload)).toString('base64').replace('=', '')
+    const encodedSignature = getEncodedSignature(encodedHeader, encodedPayload)
+    return `${encodedHeader}.${encodedPayload}.${encodedSignature}`
+  },
   decodeJWT(jwtToken) {
     const token = jwtToken.split('.')
 
