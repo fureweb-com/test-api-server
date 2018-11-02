@@ -16,9 +16,10 @@ module.exports = {
     // 스크롤 시 읽어온다.
     if (req.param('listOnly')) {
       return res.json({brandList: brandList.map(brand => {
-        delete brand.simpleDescription
-        delete brand.collectionList
-        return brand
+        const target = Object.assign({}, brand)
+        delete target.simpleDescription
+        delete target.collectionList
+        return target
       })})
     }
     
