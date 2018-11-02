@@ -68,6 +68,12 @@ module.exports.routes = {
   'PUT /api/v1/boards/:category/:boardId/replies/:replyId/like'    : 'BoardReplyController.likeReply',
   'PUT /api/v1/boards/:category/:boardId/replies/:replyId/dislike' : 'BoardReplyController.dislikeReply',
 
+  // 브랜드 목록
+  'GET /api/v1/brands'             : 'BrandController.getBrandList',
+  'GET /api/v1/brands/:id'         : 'BrandController.getBrandDetailInfo',
+  'PUT /api/v1/brands/:id/follow'  : 'BrandController.followBrand',
+  'PUT /api/v1/brands/:id/unfollow': 'BrandController.unfollowBrand',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
