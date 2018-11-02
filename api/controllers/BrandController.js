@@ -14,6 +14,14 @@ module.exports = {
     // 모든 브랜드 리스트를 응답시킨다.
     // 페이징 처리 필요
     // 스크롤 시 읽어온다.
+    if (req.param('listOnly')) {
+      return res.json({brandList: brandList.map(brand => {
+        delete brand.simpleDescription
+        delete brand.collectionList
+        return brand
+      })})
+    }
+    
     res.json({brandList})
   },
   getBrandDetailInfo(req, res) {
