@@ -30,6 +30,7 @@ module.exports = {
     if(!id || isNaN(id)) return res.badRequest({message: ['id not found']})
 
     const brandInfo = brandList.find(brand => brand.id === Number(id))
+    if(!brandInfo) return res.badRequest({message: ['존재하지 않는 브랜드입니다.']})
     res.json(brandInfo)
   },
   followBrand(req, res) {
