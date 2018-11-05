@@ -29,7 +29,7 @@ module.exports = {
     const id = req.param('id')
     if(!id || isNaN(id)) return res.badRequest({message: ['id not found']})
 
-    const brandInfo = brandList.find(brand => brand.id === id)
+    const brandInfo = brandList.find(brand => brand.id === Number(id))
     res.json(brandInfo)
   },
   followBrand(req, res) {
