@@ -74,6 +74,9 @@ module.exports.routes = {
   'PUT /api/v1/brands/:id/follow'  : 'BrandController.followBrand',
   'PUT /api/v1/brands/:id/unfollow': 'BrandController.unfollowBrand',
 
+  // 컬렉션
+  'GET /api/v1/collections/:id' : 'CollectionController.getCollectionInfo',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
