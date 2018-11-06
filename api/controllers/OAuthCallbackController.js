@@ -1,9 +1,6 @@
 const axios = require('axios')
 const Key = {
-  NAVER: {
-    clientId: 'ofHa1rgLrqm3jIwD5Dh1',
-    clientSecret: 'yY1RHBmdtd',
-  } 
+  NAVER: global.sails.config.NAVER
 }
 
 module.exports = {
