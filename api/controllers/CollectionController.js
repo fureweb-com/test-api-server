@@ -31,7 +31,7 @@ module.exports = {
           end_date: '2018-11-09', // 종료일
           accumulated_amount: 12345678, // 펀딩누적금액
           achievement_rate: 325, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
-          image_url: '/images/1.jpg', // 이미지 경로
+          image_url: 'https://www.mother-ground.com/wp-content/uploads/2018/06/s001_gg-150x150.jpg', // 이미지 경로
         },
         {
           id: 2,
@@ -39,7 +39,7 @@ module.exports = {
           end_date: '2018-12-10', // 종료일
           accumulated_amount: 12345678, // 펀딩누적금액
           achievement_rate: 85, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
-          image_url: '/images/2.jpg', // 이미지 경로
+          image_url: 'https://www.mother-ground.com/wp-content/uploads/2017/10/s001_wht2-730x730.jpg', // 이미지 경로
         },
         {
           id: 3,
@@ -47,7 +47,7 @@ module.exports = {
           end_date: '2018-11-06', // 종료일
           accumulated_amount: 12345678, // 펀딩누적금액
           achievement_rate: 235, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
-          image_url: '/images/3.jpg', // 이미지 경로
+          image_url: 'https://www.mother-ground.com/wp-content/uploads/2017/05/s001_iv_main-150x150.jpg', // 이미지 경로
         },
       ],
     })
