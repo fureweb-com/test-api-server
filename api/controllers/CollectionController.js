@@ -28,9 +28,9 @@ module.exports = {
         {
           id: 1,
           name: '아이템명',
-          end_date: '2018-12-12', // 종료일
+          end_date: '2018-11-09', // 종료일
           accumulated_amount: 12345678, // 펀딩누적금액
-          achievement_rate: 85, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
+          achievement_rate: 325, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: '/images/1.jpg', // 이미지 경로
         },
         {
@@ -38,15 +38,15 @@ module.exports = {
           name: '아이템명',
           end_date: '2018-12-10', // 종료일
           accumulated_amount: 12345678, // 펀딩누적금액
-          achievement_rate: 155, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
+          achievement_rate: 85, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: '/images/2.jpg', // 이미지 경로
         },
         {
           id: 3,
           name: '아이템명',
-          end_date: '2018-12-08', // 종료일
+          end_date: '2018-11-06', // 종료일
           accumulated_amount: 12345678, // 펀딩누적금액
-          achievement_rate: 35, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
+          achievement_rate: 235, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: '/images/3.jpg', // 이미지 경로
         },
       ],
