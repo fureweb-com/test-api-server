@@ -12,7 +12,7 @@ module.exports = {
         name: 'Mother ground', // 브랜드명
         logo_image_url: '/images/mother_ground.jpg', // 브랜드 로고 이미지
       },
-      today: moment().format('YYYY-MM-DD'), // 서버 기준 오늘 날짜
+      timestamp: +moment(), // 서버 기준 오늘 날짜, ms
       is_funding_now: true, // 현재 펀딩 여부... item_list에서 가장 높은 end_date와 오늘 날짜를 비교해야하나?
       id: collectionId,
       image_list: [
