@@ -5,16 +5,16 @@ module.exports = {
     const collectionId = req.param('id')
 
     // 컬렉션 아이디에 해당하는 컬렉션 정보 리턴
-
+    console.log('getCollectionList')
     return res.json({
       brand_info: {
-        id: collectionId, // 브랜드 아이디
+        id: Number(collectionId), // 브랜드 아이디
         name: 'Mother ground', // 브랜드명
         logo_image_url: '/images/mother_ground.jpg', // 브랜드 로고 이미지
       },
       timestamp: +moment(), // 서버 기준 오늘 날짜, ms
       is_funding_now: true, // 현재 펀딩 여부... item_list에서 가장 높은 end_date와 오늘 날짜를 비교해야하나?
-      id: collectionId,
+      id: Number(collectionId),
       image_list: [
         '/images/5.jpg',
         '/images/6.jpg',
