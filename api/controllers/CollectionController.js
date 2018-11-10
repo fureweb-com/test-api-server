@@ -50,7 +50,7 @@ module.exports = {
           image_url: 'https://www.mother-ground.com/wp-content/uploads/2017/05/s001_iv_main-730x730.jpg', // 이미지 경로
         },
         {
-          id: 3,
+          id: 4,
           name: 'S001 QU (Ivory 2)',
           end_date: '2018-11-06', // 종료일
           accumulated_amount: 98000, // 펀딩누적금액
