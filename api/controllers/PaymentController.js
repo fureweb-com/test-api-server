@@ -45,7 +45,7 @@ module.exports = {
   },
   setCardPassword({body: {password = ''}}, res) {
     if (!password) return res.badRequest({message: ['비밀번호가 누락되었습니다.']})
-    else if (password.length !== 6) return res.badRequest({message: ['비밀번호는 6자리로 작성되어야합니다.']})
+    else if (password.length !== 64) return res.badRequest({message: ['비밀번호는 SHA256으로 인코딩되어 전송되어야합니다.']})
 
     // 사용자가 자신이 등록한 간편결제 비밀번호로 사용할 정보를 전달받습니다.
     // 실제 사용 시 password는 6자리가 아닌, 복호화할 수 있는 암호화된 문자열이어야합니다.
