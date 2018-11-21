@@ -28,7 +28,7 @@ module.exports = {
         {
           id: 1,
           name: 'S001 SOU (Green grey)',
-          end_date: '2018-11-09', // 종료일
+          end_date: moment().add(5, 'day').format('YYYY-MM-DD'), // 종료일
           accumulated_amount: 98000, // 펀딩누적금액
           achievement_rate: 325, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: 'https://www.mother-ground.com/wp-content/uploads/2018/06/s001_gg-730x730.jpg', // 이미지 경로
@@ -36,7 +36,7 @@ module.exports = {
         {
           id: 2,
           name: 'S001 SI (White2)',
-          end_date: '2018-12-10', // 종료일
+          end_date: moment().add(30, 'day').format('YYYY-MM-DD'), // 종료일
           accumulated_amount: 98000, // 펀딩누적금액
           achievement_rate: 85, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: 'https://www.mother-ground.com/wp-content/uploads/2017/10/s001_wht2-730x730.jpg', // 이미지 경로
@@ -44,7 +44,7 @@ module.exports = {
         {
           id: 3,
           name: 'S001 QU (Ivory)',
-          end_date: '2018-11-06', // 종료일
+          end_date: moment().add(-2, 'day').format('YYYY-MM-DD'), // 종료일
           accumulated_amount: 98000, // 펀딩누적금액
           achievement_rate: 235, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: 'https://www.mother-ground.com/wp-content/uploads/2017/05/s001_iv_main-730x730.jpg', // 이미지 경로
@@ -52,7 +52,7 @@ module.exports = {
         {
           id: 4,
           name: 'S001 QU (Ivory 2)',
-          end_date: '2018-11-06', // 종료일
+          end_date: moment().add(1, 'day').format('YYYY-MM-DD'), // 종료일
           accumulated_amount: 98000, // 펀딩누적금액
           achievement_rate: 45, // 퍼센트 소수점 없음, 소수점 첫째자리 반올림처리
           image_url: 'https://www.mother-ground.com/wp-content/uploads/2017/05/s001_iv_main-730x730.jpg', // 이미지 경로
