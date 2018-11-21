@@ -7,7 +7,7 @@ module.exports = {
     // 스크롤 시 읽어온다.
     const brandList = BrandService.selectList()
     if (req.param('listOnly')) {
-      return res.json({brandList: brandList.map(brand => {
+      return res.json({brand_list: brandList.map(brand => {
         const target = Object.assign({}, brand)
         delete target.simple_description
         delete target.latest_collection
@@ -15,7 +15,7 @@ module.exports = {
       })})
     }
     
-    res.json({brandList})
+    res.json({brand_list: brandList})
   },
   getBrandDetailInfo(req, res) {
     const id = req.param('id')
